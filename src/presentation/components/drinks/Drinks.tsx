@@ -1,13 +1,44 @@
 import React, { useState } from "react";
+import { AppRepo } from "../../../data/repository/AppRepo";
 import { DrinksBar } from "../home/Home";
 
 class Drinks extends React.Component<any, any>{
 
+    appRepo: AppRepo
     constructor(props: any){
         super(props)
+        this.appRepo = new AppRepo()
         this.state = { drinks: [], searchTitle: this.props.title, searchIcon: this.props.icon}
+        this.loadDrinksData()
     }
 
+    loadDrinksData(){
+        switch (this.state.searchTitle) {
+            case 'Alcoholic Drinks':
+                this.appRepo.fetchAlcoholic().then(
+                    (data:any) => {
+                        this.setState({drinks: data.drinks})
+                    }
+                )
+                break;
+            case 'Beverages':
+                this.appRepo.fetchHotBeverage().then(
+                    (data:any) => {
+                        this.setState({drinks: data.drinks})
+                    }
+                )
+                break;
+            case 'Fruit Juice':
+                this.appRepo.fetchJuice().then(
+                    (data:any) => {
+                        this.setState({drinks: data.drinks})
+                    }
+                )
+                break;
+            default:
+                break;
+        }
+    }
 
     render(): React.ReactNode {
 

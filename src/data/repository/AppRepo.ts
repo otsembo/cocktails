@@ -9,6 +9,22 @@ export class AppRepo {
 
     }
 
+    fetchAlcoholic = async (): Promise<any> => {
+        return await fetch(CocktailAPI.ALCOHOLIC_DRINK)
+                .then((response: Response) => response.json())
+    }
+
+    fetchJuice = async (): Promise<any> => {
+        return await fetch(CocktailAPI.JUICE_DRINK)
+                .then((response: Response) => response.json())
+    }
+
+    fetchHotBeverage = async (): Promise<any> => {
+        return await fetch(CocktailAPI.BEVERAGE_DRINK)
+                .then((response: Response) => response.json())
+    }
+
+
 
 
 }

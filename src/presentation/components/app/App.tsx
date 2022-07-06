@@ -11,9 +11,9 @@ function App() {
         <Header/>
           <Routes>
             <Route  path='/' element={<Home/>}></Route>
-            <Route  path='/alcoholic' element={<Drinks  title={'Alcoholic Drinks'} icon={'local_bar'}/>}></Route>
-            <Route  path='/bevarages' element={<Drinks  title={'Beverages'} icon={'local_bar'}/>}></Route>
-            <Route  path='/juice' element={<Drinks  title={'Fruit Juice'} icon={'local_bar'}/>}></Route>
+            <Route  path='/alcoholic' element={<Drinks  title={'Alcoholic Drinks'} icon={'local_bar'} key={'alcoholic-route'}/>}></Route>
+            <Route  path='/bevarages' element={<Drinks  title={'Beverages'} icon={'local_bar'} key={'beverage-route'}/>}></Route>
+            <Route  path='/juice' element={<Drinks  title={'Fruit Juice'} icon={'local_bar'} key={'juice-route'}/>}></Route>
           </Routes>
       </div>
     </Router>

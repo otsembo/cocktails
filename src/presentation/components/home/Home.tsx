@@ -42,7 +42,10 @@ export class Home extends React.Component<any, any>{
             <div>
                 <Carousel items={items}/>
                 <FloatingText style={textStyle} title="WELCOME TO COCKTAILS. YOUR ONE STOP DRINK SHOP"/>
-                <DrinksBar drinks={drinks} icon={'local_bar'} title={'Latest Drinks'}/>
+                <div className="container">
+                    <DrinksBar drinks={drinks} icon={'local_bar'} title={'Latest Drinks'}/>
+                </div>
+                
             </div>
         ) 
     }
@@ -77,7 +80,7 @@ function Carousel(props: any){
 
 export function DrinksBar(props: any){
     const drink = (<h3><i className="material-icons" style={{"marginRight" : "10px"}}>{props.icon}</i>{props.title}</h3>)
-    const drinks = props.drinks.map((element:any) => <DrinkItem image={element.strDrinkThumb} title={element.title} desc={element.strInstructions} key={element.idDrink} id={element.idDrink}/>)
+    const drinks = props.drinks.map((element:any) => <DrinkItem image={element.strDrinkThumb} title={element.strDrink} desc={element.strInstructions} key={element.idDrink} id={element.idDrink}/>)
     return (
         <div className="col">
         <div className="row">

@@ -9,25 +9,29 @@ class DrinkItem extends React.Component<any, any>{
         const title = this.props.title
         const desc = this.props.desc
         const id = this.props.id
-        const route = `/drinks/${id}`
 
         return (
             <div className="col s12 m4 l3">
                 <div className="card">
-                        <div className="card-image">
-                            <img src={image} alt=""/>
-                            <span className="card-title">{title}</span>
-                            <Link to={route} className="btn-floating halfway-fab waves-effect waves-light teal">
-                                <i className="material-icons">
-                                    language
-                                </i>
-                            </Link>
+                        <div className="card-image waves-effect waves-block waves-light">
+                            <img src={image} alt="" className="activator"/>
                         </div>
-                        <div className="card-content" style={{"minHeight":"150px", "maxHeight":"150px"}}>
-                            <p style={{"minHeight":"150px", "maxHeight":"150px"}}>{desc}</p>
+                        <div className="card-content">
+                            <span className="card-title activator grey-text text-darken-4" style={{"minHeight": "75px"}}>
+                                {title}
+                                <i className="material-icons right">more_vert</i>
+                            </span>
                         </div>
+                        <div className="card-reveal">
+                            <span className="card-title activator grey-text text-darken-4">
+                                {title} <i className="material-icons right">close</i>
+                            </span>
+                            <p>{desc}</p>
+                        </div>
+                        
+                        </div>
+                        
                     </div>
-            </div>
         )
     }
 
