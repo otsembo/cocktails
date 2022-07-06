@@ -1,15 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppRepo } from "../../../data/repository/AppRepo";
 
 
 class Header extends React.Component<any, any>{
 
-    appRepo: AppRepo
     constructor(props: any){
         super(props)
-        this.appRepo = new AppRepo()
-        this.state = {navItems: this.prepareNavItems(), drinks: this.appRepo.latestDrinks}
+        this.state = {navItems: this.prepareNavItems()}
     }
 
     prepareNavItems() : any[]{

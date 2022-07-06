@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
+import React, { } from "react";
 import { AppRepo } from "../../../data/repository/AppRepo";
 import DrinkItem from "../drinkItem/DrinkItem";
 
 class Home extends React.Component<any, any>{
 
     // app repository
-    appRepo:AppRepo
+    appRepo:AppRepo = new AppRepo()
 
     constructor(props: any){
         super(props)
-        this.appRepo = new AppRepo()
-        this.state = {items: this.prepareCarouselItems(), latestDrinks: this.appRepo.latestDrinks}
+        this.state = {items: this.prepareCarouselItems(), latestDrinks: []}
+        this.loadItems()
     }
 
     prepareCarouselItems(): any[]{
@@ -23,7 +23,16 @@ class Home extends React.Component<any, any>{
         return items
     }
 
+    loadItems(){
+        this.appRepo.fetch_latest_drinks().then(
+            (data:any) => {
+                this.setState({latestDrinks: data.drinks})
+            }
+        )
+    }
+
     render(): React.ReactNode {
+        
         let items = this.state.items
         const textStyle = {
             position: "relative"
@@ -67,16 +76,18 @@ function Carousel(props: any){
 }
 
 function LatestDrinks(props: any){
-    const drink = (<h5><i className="material-icons">local_bar</i> Latest Drinks</h5>)
-    const drinks = props.drinks.map((element:any) => <DrinkItem image={element.strDrink} title={element.title} desc={element.strInstructions} id={element.idDrink}/>)
+    const drink = (<h3><i className="material-icons">local_bar</i> Latest Drinks</h3>)
+    const drinks = props.drinks.map((element:any) => <DrinkItem image={element.strDrinkThumb} title={element.title} desc={element.strInstructions} key={element.idDrink} id={element.idDrink}/>)
     return (
-        <div>
-        <div>
-            {drink}
+        <div className="col">
+        <div className="row">
+            <div className="col" style={{"marginLeft":"5%", "marginTop":"2%"}}>
+                {drink}
+            </div>
         </div>
-        {/* <div>
+        <div className="row">
             {drinks}
-        </div> */}
+        </div>
         </div>
         
     )
