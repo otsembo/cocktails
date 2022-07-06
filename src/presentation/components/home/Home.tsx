@@ -2,7 +2,7 @@ import React, { } from "react";
 import { AppRepo } from "../../../data/repository/AppRepo";
 import DrinkItem from "../drinkItem/DrinkItem";
 
-class Home extends React.Component<any, any>{
+export class Home extends React.Component<any, any>{
 
     // app repository
     appRepo:AppRepo = new AppRepo()
@@ -42,7 +42,7 @@ class Home extends React.Component<any, any>{
             <div>
                 <Carousel items={items}/>
                 <FloatingText style={textStyle} title="WELCOME TO COCKTAILS. YOUR ONE STOP DRINK SHOP"/>
-                <LatestDrinks drinks={drinks}/>
+                <DrinksBar drinks={drinks} icon={'local_bar'} title={'Latest Drinks'}/>
             </div>
         ) 
     }
@@ -75,8 +75,8 @@ function Carousel(props: any){
         )
 }
 
-function LatestDrinks(props: any){
-    const drink = (<h3><i className="material-icons">local_bar</i> Latest Drinks</h3>)
+export function DrinksBar(props: any){
+    const drink = (<h3><i className="material-icons" style={{"marginRight" : "10px"}}>{props.icon}</i>{props.title}</h3>)
     const drinks = props.drinks.map((element:any) => <DrinkItem image={element.strDrinkThumb} title={element.title} desc={element.strInstructions} key={element.idDrink} id={element.idDrink}/>)
     return (
         <div className="col">
@@ -92,6 +92,3 @@ function LatestDrinks(props: any){
         
     )
 }
-
-
-export default Home
