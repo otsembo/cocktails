@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 class DrinkItem extends React.Component<any, any>{
 
@@ -8,7 +7,6 @@ class DrinkItem extends React.Component<any, any>{
         const image = this.props.image
         const title = this.props.title
         const desc = this.props.desc
-        const id = this.props.id
 
         return (
             <div className="col s12 m4 l3">
